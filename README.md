@@ -7,11 +7,11 @@ The Centers for Medicare and Medicaid Services recently required hospitals under
 
 There is a lot of variation in adherence to these policies.  Without strong guidance on formatting from CMS, hospitals are all over the map on formatting.  Many hospitals have complied with the new rules but in ways that are not consumer friendly.  
 
-__This repository cuts out pricing noise purposefully introduced by these hospital systems__.  You can easily search for a given CPT or HCPCS code and compare those prices across hospitals.  
+**This repository cuts out pricing noise purposefully introduced by these hospital systems**.  You can easily search for a given CPT or HCPCS code and compare those prices across hospitals.  
 
 ### Acknowledgments
 
-This work is based on the work of Nathan Sutton. He started a repository for price transparency in North Carolina. You can find his repository [here][nategit].
+This work is based on the work of **Nathan Sutton**. He started a repository for price transparency in North Carolina. You can find his repository [here][nategit].
 
 ### Ontology
 
