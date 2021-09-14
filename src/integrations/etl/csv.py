@@ -1,0 +1,1 @@
+# import librariesimport osimport pandas as pd# must match a reference ontology# remember the path will be /opt/data/dim/CONCEPT.csv.gz once in the containerbase_path= '/Users/rogelio/Documents/DS/Sharpestminds/Price Transparecy/Texas/price-transparency-tx'concept = pd.read_csv(base_path.join('/volumes/data/dim/CONCEPT.csv.gz'))

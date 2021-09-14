@@ -1,0 +1,62 @@
+## Hospital Price Transparency
+
+The Centers for Medicare and Medicaid Services recently required hospitals under  [45 CFR §180.50](https://www.federalregister.gov/d/2019-24931/p-1010) to publish a [list of prices](https://www.cms.gov/hospital-price-transparency) on their websites.  They specifically instruct hospitals to make these lists...
+- As a comprehensive machine-readable file with all items and services.   
+- In a display of shoppable services in a consumer-friendly format.  
+
+There is a lot of variation in adherence to these policies.  Without strong guidance on formatting from CMS, it is no wonder hospitals are all over the map on formatting.  Many hospitals have complied with the new rules but in ways that are not consumer friendly.  500 Megabytes of JSON data is not a strong start!
+
+__This repository cuts out pricing noise purposefully introduced by these hospital systems__.  You can easily search for a given CPT or HCPCS code and compare those prices across hospitals.  
+
+### Acknowledgments
+
+This work is based on the work of Nathan Sutton. He started a repository for price transparency in North Carolina. You can find his repository [here][nategit].
+
+### Supplied Data
+
+If you don't have the proclivity to transform these data yourself with docker, there are CSV extracts available in ./volumes/data/extracts.  They are broken down into four distinct groups.
+
+- __gross__: this is often the top line item that the hospital never actually charges  
+- __cash__: this is the self-pay discounted price you would pay without insurance
+- __max__: this is the maximum negotiated rate by an insurance company in the hospital network.
+- __min__: this is the minimum negotiated rate by an insurance company in the hospital network
+
+### Ontology
+
+We rely on the excellent work of the [Athena](https://athena.ohdsi.org/) vocabulary to define the ontology of healthcare procedures.  This maps [CPT](https://www.ama-assn.org/practice-management/cpt) and [HCPCS](https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo) codes into a [common data model](https://github.com/OHDSI/CommonDataModel).
+
+### Coverage
+
+This repository covers hospitals in the Austin/San Antonio TX and sourrouding counties. Coverage of North Carolina can be found in this [repository][nategit]
+
+### Usage
+
+Quickstart with docker-compose
+```
+docker-compose up
+```
+
+Run the flyway migrations
+```
+docker-compose run flyway
+```
+
+Run the ETL
+```
+docker-compose run etl
+```
+
+Interactive PSQL client
+```
+docker exec -it postgres psql -d postgres -U builder
+```
+
+### What this is not
+
+I sacrificed some scalabilty for the name of speed.  There are some [excellent examples](https://github.com/vsoch/hospital-chargemaster/blob/master/hospitals.tsv) how you could scrape your way through this to complete automation.  I introduced a s manual step of downloading a file and naming it by the hospital ID.  All other transformations are codified and reproducible in the container.
+
+### Contact
+
+Submit an issue if you find anything inconsistent.  Like all data products, we make no assumptions and provide no warrantee.  
+
+[nategit]: https://github.com/nathansutton/hospital-price-transparency
