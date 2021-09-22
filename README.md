@@ -1,13 +1,6 @@
 ## Hospital Price Transparency (Texas)
 
-The Centers for Medicare and Medicaid Services recently required hospitals under  [45 CFR §180.50](https://www.federalregister.gov/d/2019-24931/p-1010) to publish a [list of prices](https://www.cms.gov/hospital-price-transparency) on their websites.  They specifically instruct hospitals to make these lists:
-
-- As a comprehensive machine-readable file with all items and services.   
-- In a display of shoppable services in a consumer-friendly format.  
-
-There is a lot of variation in adherence to these policies.  Without strong guidance on formatting from CMS, hospitals are all over the map on formatting.  Many hospitals have complied with the new rules but in ways that are not consumer friendly.  
-
-**This repository cuts out pricing noise purposefully introduced by these hospital systems**.  You can easily search for a given CPT or HCPCS code and compare those prices across hospitals.  
+ 
 
 ### Acknowledgments
 
