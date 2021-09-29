@@ -1,9 +1,9 @@
-FROM rocker/r-ver:4.0
+FROM python:3.8-buster
 
 RUN \
     apt-get update && \
     apt-get -y upgrade && \
-
+    apt-get -y install python3-pandas \
     apt-get clean && \
 
 
