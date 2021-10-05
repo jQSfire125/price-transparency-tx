@@ -1,5 +1,5 @@
 import os
 
-os.system("python /opt/etl/csv.py")
-os.system("python /opt/etl/json.py")
-os.system("python /opt/etl/xls.py")
+os.system("python /opt/etl/integration_csv.py")
+os.system("python /opt/etl/integration_json.py")
+os.system("python /opt/etl/integration_xls.py")
