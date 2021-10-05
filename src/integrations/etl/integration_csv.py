@@ -5,7 +5,6 @@ import numpy as np
 import datetime as dt
 
 # must match a reference ontology
-# path in final version will be /opt/data/dim/
 concept = pd.read_csv('/opt/data/dim/CONCEPT.csv.gz',
                       header=0, sep='\t', low_memory=False)
 concept = concept[['concept_code', 'concept_id']]
@@ -13,7 +12,6 @@ concept.drop_duplicates(inplace=True)
 concept.rename(columns= {'concept_code': 'cpt'}, inplace=True)
 
 # make a control file to iterate through
-# path in final version will be /opt/data/raw/
 path = '/opt/data/raw/'
 files = os.listdir(path)
 csv_files = [x for x in files if x.endswith(".csv.gz")]
@@ -22,7 +20,6 @@ hospital_ids = [int(x[:-7]) for x in csv_files]
 control = pd.DataFrame({'file': csv_files, 'hospital_id': hospital_ids})
 
 #cross reference the control file with the static dimension table
-# path in final version will be /opt/data/dim/
 dim = pd.read_csv('/opt/data/dim/hospital.csv',
                   usecols=['hospital_id', 'affiliation'])
 control = control.merge(dim, how= 'left', on='hospital_id')
@@ -41,7 +38,6 @@ for i in range(control.shape[0]):
     # hospital specific configuration
     if control.hospital_id[i] in [16]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, header=3)
         out = pd.DataFrame({
@@ -55,7 +51,6 @@ for i in range(control.shape[0]):
     
     elif control.hospital_id[i] in [17, 18, 19]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, header=4,
                          encoding_errors='ignore')
@@ -70,7 +65,6 @@ for i in range(control.shape[0]):
     
     elif control.hospital_id[i] in [21]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False)
         out = pd.DataFrame({
@@ -84,7 +78,6 @@ for i in range(control.shape[0]):
     
     elif control.hospital_id[i] in [29]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False)
         out = pd.DataFrame({
@@ -100,7 +93,6 @@ for i in range(control.shape[0]):
         
     elif control.hospital_id[i] in [34, 35, 36]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, header=4, 
                          encoding_errors='ignore')
@@ -115,7 +107,6 @@ for i in range(control.shape[0]):
         
     elif control.hospital_id[i] in [38]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, header=1)
         out = pd.DataFrame({
@@ -129,7 +120,6 @@ for i in range(control.shape[0]):
         
     elif control.hospital_id[i] in HCA:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, header=1)
         out = pd.DataFrame({
@@ -144,7 +134,6 @@ for i in range(control.shape[0]):
         
     elif control.hospital_id[i] in [43]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False)
         out = pd.DataFrame({
@@ -158,7 +147,6 @@ for i in range(control.shape[0]):
         
     elif control.hospital_id[i] in [66]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, header=1, 
                          encoding_errors='ignore')
@@ -173,7 +161,6 @@ for i in range(control.shape[0]):
         
     elif control.hospital_id[i] in [76]:
         # read in the file
-        # path in final version will be /opt/data/raw/
         df = pd.read_csv('/opt/data/raw/' + control.file[i], 
                          low_memory=False, encoding_errors='ignore')
         out = pd.DataFrame({
@@ -211,7 +198,6 @@ for i in range(control.shape[0]):
         long = long[long.columns[[3,0,1,2]]]
         
         # write the data to a flatfile for postgres
-        # path will be later /opt/data/transformed/
         if long.shape[0] > 0:
             out_path = '/opt/data/transformed/' + str(control.hospital_id[i]) + '.csv'
             long.to_csv(out_path, header=False, index=None)
