@@ -38,6 +38,6 @@ docker exec -it postgres psql -d postgres -U builder
 
 ### Contact
 
-Submit an issue if you find anything inconsistent.  Like all data products, we make no assumptions and provide no warrantee.  
+Submit an issue if you find anything inconsistent.  Like all data products, we make no assumptions and provide no warrantee.
 
 [nategit]: https://github.com/nathansutton/hospital-price-transparency
