@@ -6,7 +6,7 @@ CREATE TABLE hospital
   city                  VARCHAR(50) NULL,
   state                 VARCHAR(2) NULL,
   affiliation           VARCHAR(100) NULL,
-  disclosure            VARCHAR(500) NULL,
+  pricing_url           VARCHAR(500) NULL,
   designation           VARCHAR(500) NULL
 );
 
